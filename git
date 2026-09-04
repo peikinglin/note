@@ -1,0 +1,12 @@
+git的四个概念   远程主干、远程个人分支、本地主干、本地个人分支
+
+origin/main 是远程仓库主干（网页端）
+origin/pengshanlin_dev 是服务器上你的个人远程分支（网页端，用于将个人开发的代码合并到主干）
+
+main：个人本地主干（方便快速拿到主干最新代码，只用来同步主干）
+pengshanlin_dev 个人本地开发分支（在这里做开发）
+
+
+git指令用法
+git checkout main    #切本地main
+git pull origin main #把本地main更新到服务器最新
