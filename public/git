@@ -7,10 +7,6 @@ main：个人本地主干（方便快速拿到主干最新代码，只用来同�
 pengshanlin_dev 个人本地开发分支（在这里做开发）
 
 
-git指令用法
-git checkout main    #切本地main
-git pull origin main #把本地main更新到服务器最新
-
 更新主干最新代码git指令用法
 方法一、先更新本地main，再更新本地分支
 git checkout main    #切本地main
