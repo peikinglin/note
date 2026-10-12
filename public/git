@@ -38,6 +38,15 @@ git push origin pengshanlin_dev
 B.代码提交
 commit 之前，查看具体改动点
 前提：代码改完，**还没 git add** / 刚 git add，还没 commit
+--查看工作区（未 add）和当前分支的差异（最常用）
 git diff
 直接输出：**哪些行新增、哪些行删除**，`+`新增，`-`删除。
 只对比：**工作区文件 vs 暂存区**，如果已经执行 `git add`，`git diff` 就看不到内容了
+--如果已经 git add 加入暂存了，想看暂存里面的改动
+git diff --staged
+--只想看改动文件列表
+git status
+--查看某个指定文件的详细改动
+git diff src/test.py
+# add之后想看这个文件暂存改动
+git diff --staged src/test.py
