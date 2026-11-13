@@ -75,5 +75,5 @@ python test.py --dataroot ./datasets/pix2pix_datasets/neu_org_test --name wbc_ce
 a.显示指定--model test 进入测试模式，它会把所有输入图当作喂给加载的 G，它会自动切到 single 数据集模式
 b.无需指定--direction，测试模式没有方向概念，它会把所有输入图当作喂给加载的 G，它会自动切到 single 数据集模式
 c.显式指定 --netG unet_256，因为测试时默认使用resnet_9blocks，与训练时存在差异会报错
-d.显式指定 ---norm instance，因为测试时默认使用 instance ，与训练时存在差异会报错
+d.显式指定 ---norm batch，因为测试时默认使用 instance ，与训练时存在差异会报错
         
