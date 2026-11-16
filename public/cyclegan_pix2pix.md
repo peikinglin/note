@@ -70,7 +70,7 @@ datasets/pix2pix_datasets/wbc_cells_train_psl
 python train.py --dataroot ./datasets/pix2pix_datasets/wbc_cells_train_psl --name wbc_cell_B2A_20261112 --model pix2pix --direction BtoA 
 
 测试命令
-python test.py --dataroot ./datasets/pix2pix_datasets/neu_org_test --name wbc_cell_B2A_20261112 --model test --netG unet_256 ---norm instance
+python test.py --dataroot ./datasets/pix2pix_datasets/neu_org_test --name wbc_cell_B2A_20261112 --model test --netG unet_256 --norm batch
 这里注意
 a.显示指定--model test 进入测试模式，它会把所有输入图当作喂给加载的 G，它会自动切到 single 数据集模式
 b.无需指定--direction，测试模式没有方向概念，它会把所有输入图当作喂给加载的 G，它会自动切到 single 数据集模式
