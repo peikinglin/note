@@ -14,7 +14,8 @@ python train.py --dataroot ./datasets/cyclegan_datasets/wbc_cells --name wbc_cel
 `--dataroot`：数据集根目录（里面包含 trainA/trainB）
 `--name`：实验名字，checkpoint 存在 `checkpoints/wbc_cells/`
 `--model cycle_gan` 代表跑 CycleGAN
-
+注：训练命令后面可以加 --load_size 76 --crop_size 64  提速明显，这是针对60x60小图的比较适合的训练size，loadsize比cropsize大，是为了能够做随机裁剪增强
+                     --batch_size可以调大到8~16  --n_epochs --n_epochs_decay 可以适当放大
 # 测试命令
 双边测试
 Test a CycleGAN model (both sides):
