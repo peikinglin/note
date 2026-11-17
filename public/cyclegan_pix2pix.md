@@ -53,8 +53,8 @@ datasets/pix2pix_datasets/wbc_cells_train_psl
 ├─ test/
 │  ├─ 101.jpg
 │  ├─ 102.jpg
-然后使用如下图片合并脚本
-python datasets/combine_A_and_B.py --fold_A ./datasets/pix2pix_datasets/wbc_cells_train_psl/A --fold_B ./datasets/pix2pix_datasets/wbc_cells_train_psl/B --fold_AB./datasets/pix2pix_datasets/wbc_cells_train_psl
+然后使用如下图片合并脚本(这里如果报路径错误就使用绝对路径)
+python datasets/combine_A_and_B.py --fold_A ./datasets/pix2pix_datasets/wbc_cells_train_psl/A --fold_B ./datasets/pix2pix_datasets/wbc_cells_train_psl/B --fold_AB. /datasets/pix2pix_datasets/wbc_cells_train_psl
 
 会自动生成
 datasets/pix2pix_datasets/wbc_cells_train_psl
