@@ -24,8 +24,10 @@ Test a CycleGAN model (both sides):
 
 单向测试
 Test a CycleGAN model (one side only):
-        python test.py --dataroot ./datasets/cyclegan_datasets/wbc_hd_cells_to_test --name wbc_cell_cyclegan --model test --no_dropout
+        python test.py --dataroot ./datasets/cyclegan_datasets/wbc_hd_cells_to_test --name wbc_cell_cyclegan --model test
 这里要注意单向测试时会读取模型文件夹下（checkpoints/）的latest_net_G.pth文件，我们需要测试哪个方向的图像转化，就将对应的模型文件重命名为latest_net_G.pth
+
+训练和测试还可以考虑加不加 --no_dropout随机失活（正则模块），如果加了这个命令就是不启用这个模块，不加就是启用该模块
 
 ## pix2pix仓库的训练和测试方法
 数据集目录结构
