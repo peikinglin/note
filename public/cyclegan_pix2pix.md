@@ -16,6 +16,11 @@ python train.py --dataroot ./datasets/cyclegan_datasets/wbc_cells --name wbc_cel
 `--model cycle_gan` 代表跑 CycleGAN
 注：训练命令后面可以加 --load_size 76 --crop_size 64  提速明显，这是针对60x60小图的比较适合的训练size，loadsize比cropsize大，是为了能够做随机裁剪增强
                      --batch_size可以调大到8~16  --n_epochs --n_epochs_decay 可以适当放大
+                     dropout 在残差块里，作用是加随机扰动、防止模式崩塌。
+                     64 分辨率特征容量小，dropout 容易让训练震荡、颜色 / 纹理不稳定
+                     数据集不大，dropout 带来的正则收益有限，负面效果更突出
+                     训练带上 `--no_dropout` → 网络直接不创建 dropout 层，结构干净（cyclegan网络训练时，不加命令时，也会默认开启no_dropout）
+                     不要混用：训练不带，推理就不能带；训练带了，推理就必须带
 # 测试命令
 双边测试
 Test a CycleGAN model (both sides):
@@ -79,4 +84,5 @@ a.显示指定--model test 进入测试模式，它会把所有输入图当作�
 b.无需指定--direction，测试模式没有方向概念，它会把所有输入图当作喂给加载的 G，它会自动切到 single 数据集模式
 c.显式指定 --netG unet_256，因为测试时默认使用resnet_9blocks，与训练时存在差异会报错
 d.显式指定 ---norm batch，因为测试时默认使用 instance ，与训练时存在差异会报错
+e.对于我们的64训练数据，可以设置--load_size 72 --crop_size 64
         
