@@ -78,7 +78,7 @@ datasets/pix2pix_datasets/wbc_cells_train_psl
 python train.py --dataroot ./datasets/pix2pix_datasets/wbc_cells_train_psl --name wbc_cell_B2A_20261112 --model pix2pix --direction BtoA --netG unet_64 --no_dropout
 这里注意
 a.pix2pix模型训练默认是基于unet网络，我们的输入的64x64的细胞切图，这里最好是指定模型为--netG unet_64
-b.对于我们的64训练数据，可以设置--load_size 72 --crop_size 64
+b.对于我们的64训练数据，可以设置--load_size 64 --crop_size 64
 测试命令
 python test.py --dataroot ./datasets/pix2pix_datasets/neu_org_test --name wbc_cell_B2A_20261112 --model test --netG unet_64 --no_dropout --norm batch 
 这里注意
@@ -86,5 +86,5 @@ a.显示指定--model test 进入测试模式，它会把所有输入图当作�
 b.无需指定--direction，测试模式没有方向概念，它会把所有输入图当作喂给加载的 G，它会自动切到 single 数据集模式
 c.显式指定 --netG unet_256，因为测试时默认使用resnet_9blocks，与训练时存在差异会报错
 d.显式指定 ---norm batch，因为测试时默认使用 instance ，与训练时存在差异会报错
-e.对于我们的64训练数据，可以设置--load_size 72 --crop_size 64
+e.对于我们的64训练数据，可以设置--load_size 64 --crop_size 64
         
