@@ -14,7 +14,7 @@ python train.py --dataroot ./datasets/cyclegan_datasets/wbc_cells --name wbc_cel
 `--dataroot`：数据集根目录（里面包含 trainA/trainB）
 `--name`：实验名字，checkpoint 存在 `checkpoints/wbc_cells/`
 `--model cycle_gan` 代表跑 CycleGAN
-注：训练命令后面可以加 --load_size 76 --crop_size 64  提速明显，这是针对60x60小图的比较适合的训练size，loadsize比cropsize大，是为了能够做随机裁剪增强
+注：训练命令后面可以加 --load_size 76 --crop_size 64  提速明显，这是针对60x60小图的比较适合的训练size，loadsize比cropsize大，是为了能够做随机裁剪增强(如果二者都设置为64，会有问题，模型推理出来的B域图片都长一个样)
                      --batch_size可以调大到8~16  --n_epochs --n_epochs_decay 可以适当放大
                      dropout 在残差块里，作用是加随机扰动、防止模式崩塌。
                      64 分辨率特征容量小，dropout 容易让训练震荡、颜色 / 纹理不稳定
@@ -75,10 +75,12 @@ datasets/pix2pix_datasets/wbc_cells_train_psl
 │  ├─ 102.jpg
 
 训练命令
-python train.py --dataroot ./datasets/pix2pix_datasets/wbc_cells_train_psl --name wbc_cell_B2A_20261112 --model pix2pix --direction BtoA 
-
+python train.py --dataroot ./datasets/pix2pix_datasets/wbc_cells_train_psl --name wbc_cell_B2A_20261112 --model pix2pix --direction BtoA --netG unet_64 --no_dropout
+这里注意
+a.pix2pix模型训练默认是基于unet网络，我们的输入的64x64的细胞切图，这里最好是指定模型为--netG unet_64
+b.对于我们的64训练数据，可以设置--load_size 72 --crop_size 64
 测试命令
-python test.py --dataroot ./datasets/pix2pix_datasets/neu_org_test --name wbc_cell_B2A_20261112 --model test --netG unet_256 --norm batch
+python test.py --dataroot ./datasets/pix2pix_datasets/neu_org_test --name wbc_cell_B2A_20261112 --model test --netG unet_64 --no_dropout --norm batch 
 这里注意
 a.显示指定--model test 进入测试模式，它会把所有输入图当作喂给加载的 G，它会自动切到 single 数据集模式
 b.无需指定--direction，测试模式没有方向概念，它会把所有输入图当作喂给加载的 G，它会自动切到 single 数据集模式
