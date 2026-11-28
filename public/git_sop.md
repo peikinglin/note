@@ -9,6 +9,9 @@ pengshanlin_dev 个人本地开发分支（在这里做开发）
 git status 查看当前指向的路径，如果是指向本地main，有可能会显示落后远程main若干个commit的情况
                             如果是指向本地个人分支，则有可能会显示本地个人分支的改动情况（相对本地main）
 
+先在网页端新建一个项目，然后在本地文件夹的CMD命令里git clone这个项目，此时本地就是指向origin/main的
+接下来在网页端新建个人分支pengshanlin_dev，本地再git pull origin就会打印网页端所有版本信息，此时就可以在origin/main和origin/pengshanlin_dev之间切换了
+
 # A.更新主干最新代码git指令用法
 方法一、先更新本地main，再更新本地分支
 git checkout main    #切本地main
