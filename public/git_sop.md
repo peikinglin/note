@@ -23,8 +23,11 @@ git merge main       #合并【本地main】到自己分支
 git add .
 git commit -m "merge main最新代码到pengshanlin_dev"
 
+（此时本地代码右键查看git show log，会发现pengshanlin_dev的版本已经领先origin/main和origin/pengshanlin_dev，但是网页端的pengshanlin_dev还无提交记录）
+
 #推送本地开发分支，更新远程个人分支 origin/pengshanlin_dev
 git push origin pengshanlin_dev
+（此时网页端的pengshanlin_dev有提交记录了）
 
 方法二、绕过本地main，直接更新本地分支
 git checkout pengshanlin_dev #切本地分支
